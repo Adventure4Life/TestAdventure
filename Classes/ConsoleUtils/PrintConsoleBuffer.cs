@@ -9,9 +9,10 @@ namespace TestAdventure
 {
     static class PrintConsoleBuffer
     {
-        #region PrintStory Methods
+        /// <summary>
+        /// PrintStory : Prints out a long string of text Character by Character. Pressing any key will skip to end!
+        /// </summary>
         static private bool breakLoop = false;
-        // This actually prints the given line. Character by Character. Pressing any key will skip to end!
         public static void PrintStory(string line)
         {
             Console.CursorVisible = false;
@@ -38,6 +39,5 @@ namespace TestAdventure
             }
             Console.CursorVisible = true;
         }
-        #endregion
     }
 }

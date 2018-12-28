@@ -11,11 +11,17 @@ namespace TestAdventure
         static void Main(string[] args)
         {
             Engine.Initilise();
-            //PrintConsoleBuffer.PrintStory(ConsoleUtils.WordWrap(ConsoleUtils.ReadDataFile()));
-                      
+            Engine.StartScreen();
+            //PrintConsoleBuffer.PrintStory(TextUtils.WordWrap(TextUtils.ReadDataFile()));
+
+            while (GameState.gameIsRunning)
+            {
+                Engine.PlayGame();
+                //GameState.gameIsRunning = false;
+            }
 
             // Debugging
-            DeBugging.Exit();
+            //DeBugging.Exit();
         }
-    }
+    }   
 }

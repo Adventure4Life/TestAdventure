@@ -11,9 +11,9 @@ namespace TestAdventure
         public static void Exit()
         {
             Console.CursorVisible = false;
-            //Console.ReadKey();
             Console.WriteLine("\n*** Press Any Key to Exit ***");
             Console.ReadKey();
         }
+
     }
 }

@@ -44,10 +44,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Engine\Engine.cs" />
+    <Compile Include="Classes\Engine\GameState.cs" />
+    <Compile Include="Classes\Engine\ProcessCommand.cs" />
+    <Compile Include="Classes\Objects\ObjectList.cs" />
+    <Compile Include="Classes\Objects\QuitGame.cs" />
+    <Compile Include="Classes\Objects\Rooms.cs" />
     <Compile Include="_Debug\Debugging.cs" />
-    <Compile Include="Classes\ScreenUtils\ConsoleUtils.cs" />
+    <Compile Include="Classes\ConsoleUtils\TextUtils.cs" />
     <Compile Include="_Debug\DebuggingRandomCodeTest.cs" />
-    <Compile Include="Classes\ScreenUtils\PrintConsoleBuffer.cs" />
+    <Compile Include="Classes\ConsoleUtils\PrintConsoleBuffer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
