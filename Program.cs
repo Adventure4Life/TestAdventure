@@ -11,10 +11,7 @@ namespace TestAdventure
         static void Main(string[] args)
         {
             Engine.Initilise();
-            //string testString = "This is a long string that I am testing!! This is a long string that I am testing!! This is a long string that I am testing!! This is a long string that I am testing!! This is a long string that I am testing!! This is a long string that I am testing!! This is a long string that I am testing!! This is a long string that I am testing!! This is a long string that I am testing!!";
-            //PrintConsoleBuffer.PrintStory(ConsoleUtils.WordWrap(testString));
-
-            PrintConsoleBuffer.PrintStory(ConsoleUtils.WordWrap(ConsoleUtils.ReadDataFile()));
+            //PrintConsoleBuffer.PrintStory(ConsoleUtils.WordWrap(ConsoleUtils.ReadDataFile()));
                       
 
             // Debugging

@@ -10,40 +10,32 @@ namespace TestAdventure
     static class PrintConsoleBuffer
     {
         #region PrintStory Methods
-        // This is for use with threading. Thread t = new Thread(KeyPressed);t.Start();
-        // It Allows you to looks for a keystroke even if the application is doing something else
-        // The KeyPressed Method simple changed a bool on that key press to be used to break a loop.
         static private bool breakLoop = false;
-        static void KeyPressed()
-        {
-            while (!Console.KeyAvailable || breakLoop) { } // just do nothing while the other code prints to screen.
-            Console.ReadKey(false); // keyAvalible test dose not stop the input of the key.. so this is here to catch that. True means no cursor
-            breakLoop = true;
-        }
-
         // This actually prints the given line. Character by Character. Pressing any key will skip to end!
         public static void PrintStory(string line)
         {
             Console.CursorVisible = false;
-            Thread t = new Thread(KeyPressed);
-            t.Start();
-            while (!breakLoop)
+            for (int i = 0; i < line.Length; i++) // loop through string charIndex by charIndex
             {
-                //foreach (char c in line)
-                for (int i = 0; i < line.Length; i++)
+                // if a key is pressed break the set break loop and print the reminder of the line.
+                while (Console.KeyAvailable)
                 {
-                    char c = line[i];
-                    Console.Write(c);
-                    Thread.Sleep(5);
-                    if (breakLoop)
-                    {
-                        Console.Write(line.Substring(i, line.Length - i));
-                        break;
-                    }
+                    breakLoop = true;
+                    Console.Write(line.Substring(i, line.Length - i));
+                    break;
                 }
-               breakLoop = true;
+
+                // If we are at the end of the line or the breakLoop is true break out of for loop with out printing more chars.
+                if (breakLoop || i == line.Length)
+                {
+                    Console.ReadKey(); break;
+                }
+
+            // Print each char in the line
+                char c = line[i];
+                Console.Write(c);
+                Thread.Sleep(5);
             }
-            t.Abort();
             Console.CursorVisible = true;
         }
         #endregion
