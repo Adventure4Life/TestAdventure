@@ -14,22 +14,21 @@ namespace TestAdventure
         public static void GetInput(string input)
         {
             Engine.raw_input = input;
-            if (input == "exitgame")
-            { GameState.gameIsRunning = false; }
-            else
-            {
-                tokenizedInput = TextUtils.TokenizeString(input);
-
-
-
-
-
-
-
-
-
-            } // end of test loop.. all code while working has to be in here!
-
+            tokenizedInput = TextUtils.TokenizeString(input);
         }
     }
 }
+
+/*            if (input == "exitgame")
+            { GameState.gameIsRunning = false; }
+
+            else if (input == "look")
+            {
+                PrintConsoleBuffer.PrintStory(Level.map[Player.xRow, Player.yCol].GetRoomDescription());
+            }
+
+            else
+            {
+                tokenizedInput = TextUtils.TokenizeString(input);
+            } // end of test loop.. all code while working has to be in here!
+*/

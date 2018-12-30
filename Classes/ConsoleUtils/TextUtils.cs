@@ -53,7 +53,11 @@ namespace TestAdventure
             return result;
         }
 
-        
+        /// <summary>
+        /// Takes a string, cleans it of punctuation, sets to Lower and then tokenizes the words
+        /// </summary>
+        /// <param name="string to clean and tokenize"></param>
+        /// <returns></returns>
         public static List<string> TokenizeString(string input)
         {
             List<string> cleanedInputString = new List<string>();
@@ -63,7 +67,8 @@ namespace TestAdventure
             {
                 if (word != "")
                 {
-                    string stripWord = Regex.Replace(word, @"\p{P}", "");
+                    string stripWord = roughStemming(word);
+                    stripWord = Regex.Replace(stripWord, @"\p{P}", "");
                     cleanedInputString.Add(stripWord);
                     Console.WriteLine(stripWord);
                 }
@@ -71,8 +76,28 @@ namespace TestAdventure
            return cleanedInputString;
         }
 
-        
+        private static string roughStemming(string word)
+        {
+            string stemedWord = word;
+            string[] suffixList = new string[15] { "'s", "ation", "ee", "ure", "al", "er", "ment", "dom", "hood", "th", "ness", "ing", "s", "ed", "en" };
+
+
+            // Loop through and test each string.
+            foreach (string suffix in suffixList)
+            {
+                if (word.EndsWith(suffix))
+                {
+                    int s = word.Length - word.Length;
+                    int l = word.Length - suffix.Length;
+                    //Console.WriteLine(word.Substring(s, l));
+                    //return;
+                    stemedWord = word.Substring(s, l);
+                }
+            }
+            return stemedWord;
+        }
+
+
 
     }
-
 }

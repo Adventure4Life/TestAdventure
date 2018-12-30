@@ -46,8 +46,14 @@
     <Compile Include="Classes\Engine\Engine.cs" />
     <Compile Include="Classes\Engine\GameState.cs" />
     <Compile Include="Classes\Engine\ProcessCommand.cs" />
-    <Compile Include="Classes\Objects\ObjectList.cs" />
-    <Compile Include="Classes\Objects\QuitGame.cs" />
+    <Compile Include="Classes\FakedNLP\Stemmer\PorterConverCSharp\IPorter2Stemmer.cs" />
+    <Compile Include="Classes\FakedNLP\Stemmer\PorterConverCSharp\IStemmer.cs" />
+    <Compile Include="Classes\FakedNLP\Stemmer\PorterConverCSharp\EnglishPorter2Stemmer.cs" />
+    <Compile Include="Classes\FakedNLP\Stemmer\PorterConverCSharp\StemmedWord.cs" />
+    <Compile Include="Classes\FakedNLP\Stemmer\StemWordstToRootForm.cs" />
+    <Compile Include="Classes\Objects\Items.cs" />
+    <Compile Include="Classes\Objects\Level.cs" />
+    <Compile Include="Classes\Objects\Player.cs" />
     <Compile Include="Classes\Objects\Rooms.cs" />
     <Compile Include="_Debug\Debugging.cs" />
     <Compile Include="Classes\ConsoleUtils\TextUtils.cs" />

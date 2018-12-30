@@ -11,25 +11,33 @@ namespace TestAdventure
         //Public Variables
         public static string raw_input { get; set; }
 
+        //Permanently Active NOUN Triggers
+        private static List<string> triggers;
+
+
+        /// <summary>
+        /// Initilise Game Engine to startup prams
+        /// </summary>
         public static void Initilise()
         {
-            // Default Size = 120 : 30
-            Console.SetWindowSize(150, 40);
+            Level.InitiliseLevel();   
+            Console.SetWindowSize(150, 40); // Default Size = 120 : 30
         }
 
         public static void StartScreen()
         {
-
+            //TODO : Set a start Screen for the game initialization before main loop 
         }
 
         //******************************************
         //************* Game Functions *************
         //******************************************
-
+        /// <summary>
+        /// Prints a Input Prompt and gets line input to send to ProcessCommand
+        /// </summary>
         public static void PlayGame()
         {
-            //PrintBuffer.PrintUserInput();
-            Console.Write("> ");
+            Console.Write("\n\n> ");
             ProcessCommand.GetInput(Console.ReadLine().Trim());
         }
     }

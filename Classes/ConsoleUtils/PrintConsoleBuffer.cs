@@ -18,7 +18,7 @@ namespace TestAdventure
             Console.CursorVisible = false;
             for (int i = 0; i < line.Length; i++) // loop through string charIndex by charIndex
             {
-                // if a key is pressed break the set break loop and print the reminder of the line.
+                // if a key is pressed break the loop and print the reminder of the line.
                 while (Console.KeyAvailable)
                 {
                     breakLoop = true;

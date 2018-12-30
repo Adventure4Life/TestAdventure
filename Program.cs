@@ -16,12 +16,12 @@ namespace TestAdventure
 
             while (GameState.gameIsRunning)
             {
+                //DeBugging.TestSomething();
                 Engine.PlayGame();
-                //GameState.gameIsRunning = false;
             }
 
             // Debugging
-            //DeBugging.Exit();
+            DeBugging.Exit();
         }
     }   
 }

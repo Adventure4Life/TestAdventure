@@ -7,7 +7,7 @@ using System.Threading;
 
 namespace TestAdventure
 {
-    static class DebuggingRandomCodeTest
+    class DebuggingRandomCodeTest
     {
         public static void Test()
         {
@@ -21,7 +21,6 @@ namespace TestAdventure
                 }
             } while (Console.ReadKey(true).Key != ConsoleKey.Spacebar);
         }
-
         static private bool breakLoop = false;
         public static void PrintStoryTest(string line)
         {
