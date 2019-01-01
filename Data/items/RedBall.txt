@@ -1,0 +1,9 @@
+//--ITEM_NAME: iRedBall
+//--ITEM_CAN_BE_PICKED_UP: true
+
+//--ROOM_DESCRIPTION_DEFAULT: ROOM - This text that is displayed when you do a look command and the item is just sitting in the room.
+//--ROOM_DESCRIPTION_DROPPED: DROPPED - This text is displayed when you do a look command and the object is in the room, but it was dropped there by the player. Not all objects are allowed to be dropped. 
+//--ROOM_DESCRIPTION_GONE: GONE - This text, if used, will append itself to the default room description. EG: "The blank space where the painting was on the all is blah blah".
+
+//--GET_ITEM_SUCCESS: GET - This text is what is displayed when you sucessfully pick up the object to your inventory
+//--GET_ITEM_NOT ALLOWED: Get Fail - This text is show when you try and get a item that is NEVER allowed to be gotten in any way. It is a default fail text that dose not return feed back fomr the command.

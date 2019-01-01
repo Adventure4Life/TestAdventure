@@ -60,6 +60,10 @@ namespace TestAdventure
         /// <returns></returns>
         public static List<string> TokenizeString(string input)
         {
+            //This is how you activate the MIT License Porter2 Algorithm.
+            //EnglishPorter2Stemmer Porter2Stem = new EnglishPorter2Stemmer();
+            //string stripWord = Porter2Stem.Stem(word).Value;
+
             List<string> cleanedInputString = new List<string>();
             string[] raw_cleanedInputString = input.ToLower().Trim().Split(null);
             
@@ -67,34 +71,48 @@ namespace TestAdventure
             {
                 if (word != "")
                 {
-                    string stripWord = roughStemming(word);
-                    stripWord = Regex.Replace(stripWord, @"\p{P}", "");
-                    cleanedInputString.Add(stripWord);
-                    Console.WriteLine(stripWord);
+                    cleanedInputString.Add(word);
+                    //string stripWord = roughStemming(word);
+                    //stripWord = Regex.Replace(stripWord, @"\p{P}", "");
+                    //cleanedInputString.Add(stripWord);
+                    //Console.WriteLine(stripWord);
                 }
             }
            return cleanedInputString;
         }
-
-        private static string roughStemming(string word)
+        
+        /// <summary>
+        /// Simple Stemming System that just truncates each word to remove common morphologies. The idea here is that
+        /// we now use a string search, rather than a string match. 
+        /// So refusal == refus so string search of the word refuse with refuse will find it.
+        /// Obsequiously this a a dirty steamer, but the limitations of need in the project should make it work for us.
+        /// </summary>
+        /// <param name="word"></param>
+        /// <returns></returns>
+        public static List<string> RoughStemming(List<string> tokenizedLines)
         {
-            string stemedWord = word;
             string[] suffixList = new string[15] { "'s", "ation", "ee", "ure", "al", "er", "ment", "dom", "hood", "th", "ness", "ing", "s", "ed", "en" };
 
+            List<string> stemmedLines = new List<string>();
+            string stripWord = "";
 
-            // Loop through and test each string.
-            foreach (string suffix in suffixList)
+            foreach (string word in tokenizedLines)
             {
-                if (word.EndsWith(suffix))
+                // Loop through and test each string.
+                foreach (string suffix in suffixList)
                 {
-                    int s = word.Length - word.Length;
-                    int l = word.Length - suffix.Length;
-                    //Console.WriteLine(word.Substring(s, l));
-                    //return;
-                    stemedWord = word.Substring(s, l);
+                    if (word.EndsWith(suffix))
+                    {
+                        int s = word.Length - word.Length;
+                        int l = word.Length - suffix.Length;
+                        //Console.WriteLine(word.Substring(s, l));
+                        //return;
+                        stripWord = Regex.Replace(stripWord, @"\p{P}", "");
+                        stemmedLines.Add(word.Substring(s, l));
+                    }
                 }
             }
-            return stemedWord;
+            return stemmedLines;
         }
 
 

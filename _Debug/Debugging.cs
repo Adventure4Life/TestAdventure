@@ -10,11 +10,57 @@ namespace TestAdventure
     {
         public static void TestSomething()
         {
+            Console.WriteLine(Level.Layout[0, 0].GetRoomName());
+            Console.WriteLine(Level.Layout[0, 0].GetRoomDescription());
+            
+            foreach (Exit exit in Level.Layout[0, 0].GetExitsInRoom())
+            {
+                Console.WriteLine("\n"+exit.name);
+                Console.WriteLine(exit.open);
+                if (exit.look_room_open != "" ) { Console.WriteLine(exit.look_room_open); }
+                if (exit.look_room_closed != "") { Console.WriteLine(exit.look_room_closed); }
+                if (exit.look_at_closed != "") { Console.WriteLine(exit.look_at_closed); }
+                if (exit.look_at_open != "") { Console.WriteLine(exit.look_at_open); }
+                if (exit.use_blocked != "") { Console.WriteLine(exit.use_blocked); }
+                if (exit.use_unblocked != "") { Console.WriteLine(exit.use_unblocked); }
+            }
+        }
+
+        public static void TestTokenAndClean()
+        {
+            string testString = "nomination appointee closure refusal runner advertisement freedom likelihood realist warmth happiness look looking looks looked taken viewing regarding marking beholding contemplation inspection noticing observation speculation";
+            List<string> wordTest = new List<string>();
+
+                Console.WriteLine("*** TEST STRING ***");
+                Console.WriteLine(testString);
+                Console.WriteLine("\n");
+
+                Console.WriteLine("*** TEST TOKENISATION ***");
+            wordTest = TextUtils.TokenizeString(testString);
+                Console.WriteLine("\n");
+
+            foreach (string item in wordTest)
+            {
+                Console.WriteLine(item);
+            }
+
+                Console.WriteLine("*** TEST STEMMING ***");
+            wordTest = TextUtils.RoughStemming(wordTest);
+                Console.WriteLine("\n");
+            foreach (string item in wordTest)
+            {
+                Console.WriteLine(item);
+            }
+
+        }
+
+        public static void Test_Stemmer()
+        {
             //Console.WriteLine(Level.map[0, 0].GetRoomDescription());
             EnglishPorter2Stemmer stemming = new EnglishPorter2Stemmer();
 
             List<string> wordTest = new List<string>();
-            wordTest.Add("nomination");
+            wordTest.Add("nomination"); 
             wordTest.Add("appointee");
             wordTest.Add("closure");
             wordTest.Add("refusal");
@@ -53,15 +99,12 @@ namespace TestAdventure
             Console.WriteLine("");
 
             StemWordstToRootForm StemWord = new StemWordstToRootForm();
-
             //StemWord.wtf("testing");
 
             foreach (string item in wordTest)
             {
                 Console.WriteLine(item + " : " + StemWord.wtf(item));
             }
-
-
         }
 
         public static void Exit()
@@ -73,3 +116,12 @@ namespace TestAdventure
 
     }
 }
+/*
+ *             Console.WriteLine("\n" + Level.Layout[0, 0].GetExitsInRoom()[0].name);
+            if (Level.Layout[0, 0].GetExitsInRoom()[0].look_room_open != "") { Console.WriteLine(Level.Layout[0, 0].GetExitsInRoom()[0].look_room_open); }
+            if (Level.Layout[0, 0].GetExitsInRoom()[0].look_room_closed != "") { Console.WriteLine(Level.Layout[0, 0].GetExitsInRoom()[0].look_room_closed); }
+            if (Level.Layout[0, 0].GetExitsInRoom()[0].look_at_closed != "") { Console.WriteLine(Level.Layout[0, 0].GetExitsInRoom()[0].look_at_closed); }
+            if (Level.Layout[0, 0].GetExitsInRoom()[0].look_at_open != "") { Console.WriteLine(Level.Layout[0, 0].GetExitsInRoom()[0].look_at_open); }
+            if (Level.Layout[0, 0].GetExitsInRoom()[0].use_blocked != "") { Console.WriteLine(Level.Layout[0, 0].GetExitsInRoom()[0].use_blocked);}
+            if (Level.Layout[0, 0].GetExitsInRoom()[0].use_unblocked != "") { Console.WriteLine(Level.Layout[0, 0].GetExitsInRoom()[0].use_unblocked);}
+*/

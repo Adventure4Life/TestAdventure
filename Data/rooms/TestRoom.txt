@@ -1,0 +1,36 @@
+//--ROOM_NAME: TestRoom
+//--ROOM_DESCRIPTION: This is the base text for describing the current room with the look command. This text will apear on every time the look command is run no matter what has happened in the scene. Item and Exit text is apended onto this pharagraph. 
+
+//-Exit_START
+--NAME: north
+--IS_OPEN: true
+--LOOK_ROOM_OPEN: (north - Look room open)Look description when the way is not blocked.
+--LOOK_AT_OPEN: (north - look at open)look description of the unblocked exit.
+--USE_UNBLOCKED: (north - u)Success text for trying to use a UNBLOCKED exit.
+//-EXIT_END
+
+//-Exit_START
+--NAME: east
+--IS_OPEN: true
+--LOOK_ROOM_OPEN: (east) Look description when the way is not blocked.
+--LOOK_AT_OPEN: (east) look description of the unblocked exit.
+--USE_UNBLOCKED: (east) Success text for trying to use a UNBLOCKED exit. 
+//-EXIT_END
+
+//-Exit_START
+--NAME: up
+--IS_OPEN: false
+--LOOK_ROOM_CLOSED: (east) Look description when the way IS BLOCKED.
+--LOOK_ROOM_OPEN: (east) Look description when the way is not blocked.
+--LOOK_AT_CLOSED: (east) Look description of the blocked exit.
+--LOOK_AT_OPEN: (east) look description of the unblocked exit.
+--USE_BLOCKED: (east) Fail text for trying to use a BLOCKED exit.
+--USE_UNBLOCKED: (east) Success text for trying to use a UNBLOCKED exit.
+//-EXIT_END
+
+//LIST_OF_ITEMS_IN_ROOM--START
+RedBall
+GreenBall
+YellowBall
+BlackBall
+//LIST_OF_ITEMS_IN_ROOM--END

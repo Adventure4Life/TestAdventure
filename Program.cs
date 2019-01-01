@@ -16,7 +16,8 @@ namespace TestAdventure
 
             while (GameState.gameIsRunning)
             {
-                //DeBugging.TestSomething();
+                DeBugging.TestSomething();
+                //DeBugging.TestTokenAndClean();
                 Engine.PlayGame();
             }
 

@@ -8,24 +8,45 @@ namespace TestAdventure
 { 
     class Rooms
     {
-        //public Variables
-        private string roomName = "Default Blank Room";
-        private string roomDescription = "<description goes here>";
+        //Private Variables
+        private string roomName = "<roomName goes here>";
+        private string roomBaseDescription = "<description goes here>";
         private List<Items> itemsInRoom  = new List<Items>();
-        private List<string> exitsRoom  = new List<string>();
+        private List<Exit> exitsFromRoom  = new List<Exit>();
 
-        #region variable properties (Get / Set)
+        #region variable properties (Gets)
         public string GetRoomName() { return roomName; }
-        public string SetRoomName(string v) { roomName = v;  return roomName; }
-
-        public string GetRoomDescription() { return roomDescription; }
-        public string SetRoomDescription(string v) { roomDescription = v; return roomDescription; }
-
+        
+        public string GetRoomDescription() { return roomBaseDescription; }
+        
         public List<Items> GetItemsInRoom() { return itemsInRoom; }
-        public List<Items> AddItemToRoom(Items v) { this.itemsInRoom.Add(v); return itemsInRoom; }
+        
+        public List<Exit> GetExitsInRoom() { return exitsFromRoom; }
+        #endregion
+        
+        #region variable properties (Sets)
+        public void SetRoom_NameVariable(string importLine)
+        {
+            roomName = importLine;
+        }
 
-        public List<string> GetExitsInRoom() { return exitsRoom; }
-        public List<string> SetExitsofRoom(string v) { exitsRoom.Add(v); return exitsRoom; }
+        public void SetRoom_BaseDescription(string importLine)
+        {
+            roomBaseDescription = importLine;
+        }
+
+        public void SetRoom_AddExit(Exit exit)
+        {
+            exitsFromRoom.Add(exit);
+        }
+
+        public void SetRoom_AddItem(Items item)
+        {
+            itemsInRoom.Add(item);
+        }
+
+        //public List<string> SetExitsofRoom(string v) { exitsRoom.Add(v); return exitsRoom; }
+        public List<Items> AddItemToRoom(Items v) { this.itemsInRoom.Add(v); return itemsInRoom; }
         #endregion
     }
 }
