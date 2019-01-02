@@ -24,6 +24,17 @@ namespace TestAdventure
                 if (exit.use_blocked != "") { Console.WriteLine(exit.use_blocked); }
                 if (exit.use_unblocked != "") { Console.WriteLine(exit.use_unblocked); }
             }
+
+            foreach (Items item in Level.Layout[0, 0].GetItemsInRoom())
+            {
+                Console.WriteLine("\n" + item.itemName);
+                Console.WriteLine(item.canBeGot);
+                //if (item.itemDescription_Default != "") { Console.WriteLine(item.itemDescription_Default); }
+                //if (item.itemDescription_Dropped != "") { Console.WriteLine(item.itemDescription_Dropped); }
+                //if (item.itemDescription_Gone != "") { Console.WriteLine(item.itemDescription_Gone); }
+                //if (item.getItem_Success != "") { Console.WriteLine(item.getItem_Success); }
+                //if (item.getItem_NotAllowed != "") { Console.WriteLine(item.getItem_NotAllowed); }
+            }
         }
 
         public static void TestTokenAndClean()
