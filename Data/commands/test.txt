@@ -1,7 +1,23 @@
 //Base VERB
-look
+stem
 
 //Synonyms-Start
+nomination
+appointee 
+closure 
+refulsal 
+runner 
+advertisement 
+freedom 
+likelihood 
+realist 
+warmth 
+happiness 
+look 
+looking 
+looks 
+looked 
+taken
 attention
 behold
 browse
@@ -26,7 +42,6 @@ gaze
 glance
 glare
 glimpse
-glower
 goggle
 inspect
 leer
@@ -66,29 +81,3 @@ witness
 //Synonyms-END
 
 //Junk
-viewing
-surveil
-*scrutinize
-*regarding
-*recognize
-blink
-marking
-notice
-*beholding
-*contemplation
-*for
-*gloat
-*gun
-*inspection
-*introspection
-*keeping watch
-*look-see
-*noticing
-*observation
-*outface
-*outstare
-*peruse
-*rubberneck
-*speculation
-*supervise
-*surveillance

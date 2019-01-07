@@ -58,7 +58,7 @@ namespace TestAdventure
         /// </summary>
         /// <param name="string to clean and tokenize"></param>
         /// <returns></returns>
-        public static List<string> TokenizeString(string input)
+        public static List<string> TokenizeStringList(string input)
         {
             //This is how you activate the MIT License Porter2 Algorithm.
             //EnglishPorter2Stemmer Porter2Stem = new EnglishPorter2Stemmer();
@@ -72,10 +72,6 @@ namespace TestAdventure
                 if (word != "")
                 {
                     cleanedInputString.Add(word);
-                    //string stripWord = roughStemming(word);
-                    //stripWord = Regex.Replace(stripWord, @"\p{P}", "");
-                    //cleanedInputString.Add(stripWord);
-                    //Console.WriteLine(stripWord);
                 }
             }
            return cleanedInputString;
@@ -107,15 +103,66 @@ namespace TestAdventure
                         int l = word.Length - suffix.Length;
                         //Console.WriteLine(word.Substring(s, l));
                         //return;
+                        stripWord = word.Substring(s, l);
                         stripWord = Regex.Replace(stripWord, @"\p{P}", "");
-                        stemmedLines.Add(word.Substring(s, l));
+                        stemmedLines.Add(stripWord);
                     }
                 }
             }
             return stemmedLines;
         }
+        //Overloaded version of RouchStemming - this one takes a single word as a string.
+        public static string RoughStemming(string word)
+        {
+            string[] suffixList = new string[15] { "'s", "ation", "ee", "ure", "al", "er", "ment", "dom", "hood", "th", "ness", "ing", "s", "ed", "en" };
+            string originalWord = word;
+            
+            foreach (string suffix in suffixList)
+            {
+                if (word.Length > 4)
+                {
+                    if (word.EndsWith(suffix))
+                    {
+                        int s = word.Length - word.Length;
+                        int l = word.Length - suffix.Length;
+                        word = word.Substring(s, l);
+                        word = StemmingExceptions(word, originalWord);
+                        Console.WriteLine(word + ", " + suffix + "  :  " + originalWord);
+                    }
+                }
+            }
+            word = Regex.Replace(word, @"\p{P}", "");
+            return word;
+        }
 
-
+        public static string StemmingExceptions(string word, string originalWord)
+        {
+            if (word == "wit" && originalWord == "witness")
+                word = originalWord;
+            return word;
+        }
 
     }
+
+
+
 }
+
+/*
+  
+                // Loop through and test each string.
+                foreach (string suffix in suffixList)
+                {
+                    if (word.EndsWith(suffix))
+                    {
+                        int s = word.Length - word.Length;
+                        int l = word.Length - suffix.Length;
+                        Console.WriteLine(word.Substring(s, l));
+                        //return;
+                        //stripWord = Regex.Replace(stripWord, @"\p{P}", "");
+                        stripWord = word.Substring(s, l);
+                    }
+                }
+            
+            stripWord = Regex.Replace(stripWord, @"\p{P}", "");
+*/

@@ -14,7 +14,7 @@ namespace TestAdventure
         public static void GetInput(string input)
         {
             Engine.raw_input = input;
-            tokenizedInput = TextUtils.TokenizeString(input);
+            tokenizedInput = TextUtils.TokenizeStringList(input);
         }
     }
 }

@@ -20,7 +20,8 @@ namespace TestAdventure
         /// </summary>
         public static void Initilise()
         {
-            Level.InitiliseLevel();   
+            Level.InitiliseLevel();
+            CommandConstants.InitiliseCommandConstants();
             Console.SetWindowSize(150, 40); // Default Size = 120 : 30
         }
 
@@ -37,7 +38,7 @@ namespace TestAdventure
         /// </summary>
         public static void PlayGame()
         {
-            Console.Write("\n\n> ");
+            Console.Write("\n> ");
             ProcessCommand.GetInput(Console.ReadLine().Trim());
         }
     }

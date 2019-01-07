@@ -10,6 +10,15 @@ namespace TestAdventure
     {
         public static void TestSomething()
         {
+            Console.WriteLine(CommandConstants.ConstantCommands["gaze"]);
+            /*foreach (var item in CommandConstants.ConstantCommands)
+            {
+                Console.WriteLine(item);
+            }*/
+        }
+
+        public static void TestImportRoomData()
+        {
             Console.WriteLine(Level.Layout[0, 0].GetRoomName());
             Console.WriteLine(Level.Layout[0, 0].GetRoomDescription());
             
@@ -47,7 +56,7 @@ namespace TestAdventure
                 Console.WriteLine("\n");
 
                 Console.WriteLine("*** TEST TOKENISATION ***");
-            wordTest = TextUtils.TokenizeString(testString);
+            wordTest = TextUtils.TokenizeStringList(testString);
                 Console.WriteLine("\n");
 
             foreach (string item in wordTest)

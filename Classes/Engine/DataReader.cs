@@ -12,12 +12,14 @@ namespace TestAdventure
     {
         private static string dataPath_rooms = @"Data\rooms\";
         private static string dataPath_items = @"Data\items\";
+        private static string dataPath_commands = @"Data\commands\";
         //private static string dataPath_commands = @"Data\commands\";
         private static List<string> readData_RoomFile = new List<string>();
         private static List<string> readData_ItemFile = new List<string>();
+        private static List<string> readData_WordList = new List<string>();
 
         /// <summary>
-        /// ReadDataFile : Read File Method
+        /// ReadDataFile : Read File Method - This is called from inside ImportXXX Method
         /// </summary>
         /// <returns></returns>
         public static List<string> ReadDataFile(string path, string filename)
@@ -36,6 +38,12 @@ namespace TestAdventure
             return ReadData_asLines;
         }
 
+        #region ImportRoom Data Code Block. This has all the code to create the rooms.
+        /// <summary>
+        /// This is the method call that imports ROOMDATA from a Room Data text File
+        /// </summary>
+        /// <param name="name of phyciscal data file"></param>
+        /// <returns></returns>
         public static Rooms ImportRoomData(string name)
         {
             Rooms room = new Rooms();
@@ -114,7 +122,12 @@ namespace TestAdventure
 
         return room; // FINAL RETURN
         }
-
+        /// <summary>
+        /// In the Room Data Text File is a list of Items, each Item matches the name of a item data file.
+        /// They are all imported into a List<Items> for the room
+        /// </summary>
+        /// <param name="itemName">The Name of the physical item data text file</param>
+        /// <returns></returns>
         private static Items ProcessItemsToRooms(string itemName)
         {
             Items item = new Items();
@@ -184,7 +197,13 @@ namespace TestAdventure
             }
             return item;
         }
-
+        /// <summary>
+        /// This imports a list of all the exits in the room. It find data in the Room Data Text File between 
+        /// Exit Start and Exit End and uses that to create as many exits as it finds.
+        /// </summary>
+        /// <param name="start">Start is the index key value for data file brackest of Exit Start</param>
+        /// <param name="end">Start is the index key value for data file brackest of Exit END</param>
+        /// <returns></returns>
         private static Exit ProcessExitsToRoom(int start, int end)
         {
             Exit exit = new Exit();
@@ -263,7 +282,15 @@ namespace TestAdventure
             }
             return exit;
         }
+        #endregion
 
+        /// <summary>
+        /// cleans all the category text fomr the lines used in the various data reads. I felt as it is pretty small list
+        /// it would be cleaner to use one method to handle all cleaning, rather than split it into a clean method for each data 
+        /// file type being imported.
+        /// </summary>
+        /// <param name="line">The Line is a single line in a List<string> or lines imported in by ReadDataFile</param>
+        /// <returns></returns>
         private static string cleanCatagorieTxT(string line)
         {
             string[] catagoriesList = new string[17] 
@@ -284,5 +311,46 @@ namespace TestAdventure
             return line.Trim();
         }
 
+        #region ImportWord Lists
+
+        public static void ImportCommandData(string filename)
+        {
+            string command = "";
+            int SynonymsStart = 0;
+            int SynonymsEnd = 0;
+
+            readData_WordList = ReadDataFile(dataPath_commands, filename);
+
+            for (int i=0;i<readData_WordList.Count;i++)
+            {
+                if (readData_WordList[i] == "//Base VERB")
+                {
+                    command = readData_WordList[i + 1];
+                }
+                else if (readData_WordList[i] == "//Synonyms-Start")
+                {
+                    SynonymsStart = i;
+                }
+                else if (readData_WordList[i] == "//Synonyms-END")
+                {
+                    SynonymsEnd = i;
+                }
+            }
+            //Console.WriteLine(key + SynonymsStart + SynonymsEnd);
+            for (int i= SynonymsStart+1; i< SynonymsEnd; i++)
+            {
+                //string synonym = readData_WordList[i];
+                //string test = TextUtils.RoughStemming(synonym.Trim());
+                //Console.WriteLine(test);
+                //Console.WriteLine(command + ", " + synonym+ ", " +test);
+                //CommandConstants.AddCommand(command, synonym);
+
+                string synonym = TextUtils.RoughStemming(readData_WordList[i].Trim());
+                CommandConstants.AddCommand(synonym, command);
+            }
+            CommandConstants.AddCommand(command, command);
+        }
+
+        #endregion
     }
 }

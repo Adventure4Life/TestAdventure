@@ -7,3 +7,6 @@
 
 //--GET_ITEM_SUCCESS: GET - This text is what is displayed when you sucessfully pick up the object to your inventory
 //--GET_ITEM_NOT ALLOWED: Get Fail - This text is show when you try and get a item that is NEVER allowed to be gotten in any way. It is a default fail text that dose not return feed back fomr the command.
+
+//--NOUN
+yellow

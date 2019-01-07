@@ -1,4 +1,4 @@
-//--ITEM_NAME: iRedBall
+//--ITEM_NAME: iGreenBall
 //--ITEM_CAN_BE_PICKED_UP: true
 
 //--ROOM_DESCRIPTION_DEFAULT: ROOM - This text that is displayed when you do a look command and the item is just sitting in the room.
